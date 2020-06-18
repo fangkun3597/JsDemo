@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+//		function fun(char,n){
+//			var str = "";
+//			while(true)
+//			{
+//				if(n%2==1)
+//				{
+//					str += char;
+//				}
+//				char += char;
+//				if(n==0||n==1)
+//				{
+//					break;
+//				}
+//				n=parseInt(n/2);
+//			}
+//			return str;
+//		}
+
+		// 冒泡排序
+		// var num=[25,54,12,98,65];
+
+		// function maopao(num){
+		// 	for(var i=0;i<num.length-1;i++)
+		// 	{
+		// 		for(var j=0; j<num.length-1-i;j++)
+		// 		{
+		// 			if(num[j]>num[j+1])
+		// 			{
+		// 				var temp = num[j];
+		// 				num[j] = num[j+1];
+		// 				num[j+1] = temp;
+		// 			}
+		// 		}
+		// 	}
+		// 	return num;
+		// }
+		// maopao(num);
+		// console.log(num);
+		
+		// 快速排序
+		var num = [];
+		for(var nm = 0; nm < 1000; nm++)
+		{
+			num.push(parseInt(Math.random()*300));
+		}
+		
+		var startTime = new Date();
+		kuaipai(num,0,num.length-1);
+		var stopTime = new Date();
+		
+		console.log(stopTime-startTime);
+
+		function kuaipai(num,left,right)
+		{
+			var key = num[left];
+			var i = left;
+			var j = right;
+			while(i<j)
+			{
+				while(i<j && num[j]>key)//找到第一个小于key的值
+				{
+					j--;
+				}
+				num[i] = num[j];
+				while(i<j && num[i]<=key)
+				{
+					i++;
+				}
+				num[j] = num[i];
+			}
+			if(left >= right) //结束条件，right和left之间没有数字，表示左右遍历到同一个数字
+				return;
+
+			num[j] = key;
+			kuaipai(num,left,i-1);
+			kuaipai(num,j+1,right);
+		}
+		console.log(num);
+		// kuaipai(num,0,num.length-1);
+		// console.log(num);
+	</script>
+</body>
+</html>
