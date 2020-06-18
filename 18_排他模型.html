@@ -11,6 +11,8 @@
 		}
 		p{
 			float: left;
+			text-align: center;
+			line-height: 60px;
 			width: 60px;
 			height: 60px;
 			background-color: #ccc;
@@ -39,22 +41,38 @@
 
 		//事件监听只有onmouseover没有onmouseout
 		//循环语句添加事件
-		for (var i = 0; i < ps.length; i++) {
-			//编号
-			ps[i].idx = i;
-			//监听
-			ps[i].onmouseover = function(){
-				//碰到每个p的时候，实际上是两件事儿
-				//第一件事儿，让所有人(包括自己)都变灰色
-				for(var j = 0 ; j < ps.length ; j++){
-					ps[j].style.backgroundColor = "#ccc";
+		// for (var i = 0; i < ps.length; i++) {
+		// 	//编号
+		// 	ps[i].idx = i;
+		// 	//监听
+		// 	ps[i].onmouseover = function(){
+		// 		//碰到每个p的时候，实际上是两件事儿
+		// 		//第一件事儿，让所有人(包括自己)都变灰色
+		// 		for(var j = 0 ; j < ps.length ; j++){
+		// 			ps[j].style.backgroundColor = "#ccc";
+		// 		}
+		// 		//第二件事儿，让自己变红
+		// 		this.style.backgroundColor = "red";
+		// 		//第三件事儿，让h1里面的内容变为自己的序号
+		// 		biaoti.innerHTML = this.idx;
+		// 	}
+		// }
+
+		for(var i=0; i<ps.length;i++)
+		{
+			(function(i){
+				ps[i].onmouseover = function(){
+					for(var j = 0 ; j < ps.length ; j++){
+						ps[j].style.backgroundColor = "#ccc";
+						ps[j].innerText = null;
+					}
+				
+					this.style.backgroundColor = "red";
+					this.innerHTML = i ;
+					biaoti.innerHTML = i;
 				}
-				//第二件事儿，让自己变红
-				this.style.backgroundColor = "red";
-				//第三件事儿，让h1里面的内容变为自己的序号
-				biaoti.innerHTML = this.idx;
-			}
-		};
+			})(i);
+		}
 	</script>
 </body>
 </html>

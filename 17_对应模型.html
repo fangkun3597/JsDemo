@@ -51,17 +51,16 @@
 		// for (var i = 0; i < box1ps.length; i++) {
 		// 	//编号
 		// 	box1ps[i].idx = i;	
-		// 	//添加监听
+		// 	//添加监听 点击 box1ps box2ps变红
 		// 	box1ps[i].onclick = function(){
 		// 		box2ps[this.idx].style.backgroundColor = "red";
 		// 	}
 		// };
 
-
 		// 方法2，IIFE
 		//循环语句添加监听，给第一排的所有p绑定事件
 		for (var i = 0; i < box1ps.length; i++) {
-			(function(i){
+			(function(i){   //避免闭包
 				//添加监听
 				box1ps[i].onclick = function(){
 					box2ps[i].style.backgroundColor = "red";
