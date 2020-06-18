@@ -26,8 +26,18 @@
 		var ps = document.getElementsByTagName("p");
 
 		for(var i = 0 ; i < ps.length ; i++){
-			ps[i].onclick = function(){
-				this.style.backgroundColor = "red";
+			if(i==2)
+			{
+					ps[i].onclick = function(){
+					this.style.backgroundColor = "yellow";
+				}
+			}else{
+				ps[i].onclick = function(){
+					this.style.backgroundColor = "red";
+				}
+			}
+			ps[i].onmouseout = function(){
+					this.style.backgroundColor = "skyblue";
 			}
 		}
 	</script>
