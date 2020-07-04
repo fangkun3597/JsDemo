@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            margin: 100px auto;
+            height: 130px;
+            width: 500px;
+            border: 10px solid gray;
+            position: relative;
+            overflow: hidden;
+        }
+        .box1 .box2{
+            width: 5000px;
+            height: 130px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .box1 .box2 ul{
+            list-style: none;
+        }
+        .box1 .box2 ul li{
+            float: left;
+            height: 130px;
+            margin-right: 10px;
+        }
+        .box1 .box2 ul li span{
+            display:block;
+            height: 130px;
+            width: 100px;
+        }
+        .box1 .box2 ul li span.num1{
+            background-color: red;
+        }
+        .box1 .box2 ul li span.num2{
+            background-color: yellow;
+        }
+        .box1 .box2 ul li span.num3{
+            background-color: blue;
+            width: 200px;
+        }
+        .box1 .box2 ul li span.num4{
+            background-color: green;
+        }
+        .box1 .box2 ul li span.num5{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1" id="b1">
+        <div class="box2" id="b2">
+            <ul>
+                <li><span class="num1">1</span></li>
+                <li><span class="num2">2</span></li>
+                <li><span class="num3">3太胖了</span></li>
+                <li><span class="num4">4</span></li>
+                <li><span class="num5">5</span></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var box_1 = document.getElementById("b1");
+        var box_2 = document.getElementById("b2");
+        var listul = box_2.getElementsByTagName("ul")[0];
+    
+        listul.innerHTML += listul.innerHTML;
+        var li_list = listul.getElementsByTagName("li");
+        var list_len = li_list.length;
+
+        var copylist = li_list[list_len/2];
+    
+        var nowleft = 0;
+        var timer;
+
+        move();
+        
+        box_1.onmouseover = function(){
+            clearInterval(timer);
+        }
+        box_1.onmouseout = function(){
+            move();
+        }
+
+        function move(){
+            clearInterval(timer);
+            timer = setInterval(function(){
+                nowleft -= 2;
+                if(nowleft < -copylist.offsetLeft)
+                    nowleft = 0;
+                box_2.style.left = nowleft + "px";
+            },50);
+        }
+
+
+    </script>
+</body>
+</html>

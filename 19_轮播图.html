@@ -153,12 +153,13 @@
 		var carousel_rightBtn = document.getElementById("carousel_rightBtn");
 		var circlesLis = document.getElementById("circles").getElementsByTagName("li");
 		var imagesListLis = document.getElementById("imagesList").getElementsByTagName("li");
-
+		var boxID = document.getElementById("imagesList");
 		//信号量
 		var img_idx = 0;  //合理值0、1、2、3、4
-
+		var timer;
 		//右按钮监听
 		carousel_rightBtn.onclick = function(){
+			clearInterval(timer);
 			//改变信号量
 			img_idx++;
 			if(img_idx > 4){
@@ -170,6 +171,7 @@
 
 		//左按钮监听
 		carousel_leftBtn.onclick = function(){
+			clearInterval(timer);
 			//改变信号量
 			img_idx--;
 			if(img_idx < 0){
@@ -184,15 +186,32 @@
 			(function(i){
 				//监听
 				circlesLis[i].onmouseover = function(){
+					clearInterval(timer);
 					//改变信号量
 					img_idx = i;
 					//调用函数
 					changePic();	//这个函数帮你换图、帮你换小圆点谁是红的谁是灰色的
-				};
-			})(i)
+				}
+			})(i);
 		};
 
+		boxID.onmouseover = function(){		
+			clearInterval(timer);
+		}
+		boxID.onmouseout = function(){
+			move();
+		}
 
+		function move(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				img_idx++;
+				if(img_idx > 4){
+					img_idx = 0;
+				}
+				changePic();
+			},1000);
+		}
 		//具体业务的函数，根据当前信号量的值，来切换图片
 		function changePic(){
 			//去掉所有图片li的current类名
@@ -209,6 +228,7 @@
 			//把当前信号量的小圆点li加上current类
 			circlesLis[img_idx].className = "current";
 		}
+
 	</script>
 </body>
 </html>
