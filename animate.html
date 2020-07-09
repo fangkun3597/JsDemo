@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">1</div>
+    <div id="box1">2</div>
+    <div id="box1">3</div>
+
+
+
+    <script type="text/javascript">
+
+        var box1 = document.getElementById("box1");
+        animate();
+        alert(window.navigator.userAgent);
+        function animate(elem, targetJson,time){
+            if(window.navigator.userAgent.indexOf("MSIE") != -1)
+            {
+                var interval = 50;
+            }else{
+                var interval = 10;
+            }
+
+            //通过目标JSON，获取到目标JSON里对应初始的值
+            var tempJson = {};
+            for(var k in targetJson)
+            {
+                tempJson[k] = getComputedStyle()[]
+            }
+
+            function fetchComputedStyle(obj,proprety){
+                if(window.getComputedStyle)
+                {
+                    
+                }else{
+
+                }
+            }
+        }
+    </script>
+</body>
+</html>

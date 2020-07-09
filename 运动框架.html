@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script type="text/javascript">
+        var odiv = document.getElementsByTagName("div")[0];
+        var nowleft=0;
+        var nowtop=0;
+
+        //运动到 （500，360） 时间3000ms
+        //计算步长  确定每一帧的时间  定为30ms  left步长 = 500/（3000/30）= 5px  top步长 = 360/（3000/30）= 3.6px 
+
+        var timer;
+        var count = 0;
+
+        timer = setInterval(function(){
+            nowleft += 5;
+            nowtop += 3.6;
+            count ++ ;
+            odiv.style.top = nowtop + "px";
+            odiv.style.left = nowleft + "px";
+            if(count == 100)
+            {
+                clearInterval(timer);
+            }
+        },30);  
+    </script>
+</body>
+</html>
